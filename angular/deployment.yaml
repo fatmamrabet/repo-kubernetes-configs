@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: angular-k8s-deployment
+  namespace: deployment1
+spec:
+  selector:
+    matchLabels:
+      app: angular-k8s-deployment
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: angular-k8s-deployment
+    spec:
+      containers:
+      - name: angular-k8s-deployment
+        image: fatmamrabet/angular-app:v6
+        ports:
+        - containerPort: 80

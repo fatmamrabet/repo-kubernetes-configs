@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-k8s-mysql
+  namespace: deployment1
+spec:
+  selector:
+    matchLabels:
+      app: springboot-k8s-mysql
+  replicas: 1 
+  template:
+    metadata:
+      labels:        
+        app: springboot-k8s-mysql
+    spec:
+      containers:
+        - name: springboot-k8s-mysql
+          image: fatmamrabet/springboot-k8s-deployment:1.0
+          ports:
+            - containerPort: 8080                
+          env:
+          - name: DB_HOST
+            valueFrom: 
+              configMapKeyRef:
+                name: db-conf
+                key: host
+          - name: DB_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: db-conf 
+                key: name
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: db-credentials
+                key: username
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: db-credentials
+                key: password
