@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: springboot-k8s-mysql
-          image: fatmamrabet/springboot-k8s-deployment:1.0
+          image: fatmamrabet/springboot-k8s-deployment:fd8186ba76e7c0f7bbe8a73ef7966c54248bd9d4
           ports:
             - containerPort: 8080                
           env:
