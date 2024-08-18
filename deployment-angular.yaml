@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: angular-k8s-deployment
-        image: fatmamrabet/angular-app:v6
+        image: fatmamrabet/angular-app:4eae2c7e5338bb76dc3bdc2342e22575e1a08cc1
         ports:
         - containerPort: 80
